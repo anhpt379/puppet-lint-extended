@@ -21,6 +21,18 @@ RSpec.describe 'leading_comment_space' do
     it { expect(problems).to have(0).problems }
   end
 
+  context 'with multiple #' do
+    let(:code) { "###### Foo" }
+
+    it { expect(problems).to have(0).problems }
+  end
+
+  context 'with multiple #' do
+    let(:code) { "######Foo" }
+
+    it { expect(problems).to have(1).problems }
+  end
+
   context 'with single #' do
     let(:code) { "#" }
 
